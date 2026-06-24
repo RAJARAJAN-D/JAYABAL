@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jayabal | Master Carpenter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+        }
+
+        :root {
+            --primary: #2c2c2c;
+            --secondary: #8b7355;
+            --light: #fafafa;
+            --gray: #e8e8e8;
+            --text: #333;
+            --text-light: #666;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+
+        /* Navigation */
+      nav {
+             position: fixed;
+             top: 0;
+             left: 0;
+             right: 0;
+
+             background: rgba(255, 255, 255, 0.7);
+             backdrop-filter: blur(15px);
+             -webkit-backdrop-filter: blur(15px);
+
+             padding: 1rem 2rem;
+             display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+             z-index: 1000;
+             border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+            .nav-container {
+             max-width: 1200px;
+             margin: auto;
+             padding: 1rem 2rem;
+
+             display: flex;
+             align-items: center;
+             justify-content: space-between;
+            }
+
+    .logo {
+             font-size: 1.8rem;
+             font-weight: 800;
+             color: var(--primary);
+             text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+    .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            position: relative; 
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+   .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* adjust spacing */
+    width: 0%;
+    height: 2px;
+    background: var(--secondary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+       .nav-cta {
+    padding: 0.6rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.nav-cta:hover {
+    background: var(--secondary);
+}
+
+/* Mobile menu stays same */
+.menu-toggle {
+    display: none;
+}
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: 
+    linear-gradient(rgba(84, 84, 84, 0.5), rgba(247, 244, 244, 0.5)),
+    url('images/image11.png') center/cover no-repeat;
+            
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+        }
+
+       .hero .tagline {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: rgb(3, 3, 3);   /* changed here */
+    max-width: 500px;
+    margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .hero-cta:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section-heading {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+    aspect-ratio: 4/5;
+    background: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* ensures image doesn’t spill out */
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills container while keeping proportions */
+}
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray);
+        }
+
+        .stat h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .stat p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background: white;
+            padding: 6rem 2rem;
+            max-width: 100%;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+             width: 100%;
+            height: 100%;
+            object-fit: cover; /* fills container while keeping proportions */
+        }
+
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #f0ebe3 0%, #fafafa 100%);
+            max-width: 100%;
+            padding: 6rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-details span {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 1px solid var(--gray);
+            background: white;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(250, 250, 250, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                display: none;
+                border-bottom: 0.5px solid var(--gray);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .stats {
+                gap: 2rem;
+            }
+
+            .stat h3 {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+                aspect-ratio: 2/1;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 3rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+                aspect-ratio: 1;
+            }
+        }
+     .hidden {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s ease-out;
+    }
+
+    .show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s ease-out;
+    }
+    .gallery-item,
+.about-image {
+    transition: all 0.8s ease;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Jayabal</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+    <h1><span class="jc">JB</span> Wood Works</h1>
+
+    <p class="tagline">
+        Building contract Works...<br>
+        மர வேலைகள் (வாசற்கால், ஜன்னல், கபோடுகள் & பர்ணிச்சர்ஸ்) 
+        மாடன் கிச்சன் அனைத்தும் சிறந்த முறையில் சேய்து தரப்படும்.
+    </p>
+
+    <a href="#contact" class="hero-cta">GET IN TOUCH</a>
+</section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about">
+            <div class="about-content">
+                <p class="section-title">About Me</p>
+                <h2 class="section-heading">Woodworking is not just my profession — it's my legacy.</h2>
+                <ul class="about-list">
+                 <li>20+ years of experience in fine carpentry</li>
+                 <li>Corpenter work [All Service Available]</li>
+                 <li>Morden Kitchen Works, Furnitures</li>
+                 <li>Laft wood work, Cupboard Works</li>
+                 <li>Each project crafted with unique character and precision</li>
+                </ul>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>20+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h3>500+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat">
+                        <h3>100%</h3>
+                        <p>Satisfied Clients</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                 <img src="images/image12.jpg" alt="Portrait Photo">
+            </div>
+        </div>
+    </section>
+
+                <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="gallery-container">
+            <p class="section-title">Portfolio</p>
+            <h2 class="section-heading">Selected Works</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/image19.jpg" alt="Featured Project">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/image20.jpg" alt="Custom Table">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/image17.jpg" alt="Kitchen Cabinets">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/image13.jpg" alt="Wooden Doors">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/image1.png" alt="Bookshelf">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/image14.jpg" alt="Chair Set">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <p class="section-title">Contact</p>
+                <h2>Let's build something beautiful together.</h2>
+                <p>Have a project in mind? I'd love to hear about it. Reach out and let's discuss how we can bring your vision to life.</p>
+                <div class="contact-details">
+                    <span>📍 Pon Nagar, Pondicherry</span>
+                    <span>📞 +91 95974 79789</span>
+                    <span>✉️ jayabaljl135@gmail.com</span>
+                </div>
+            </div>
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Jayabal Carpentry. All rights reserved.</p>
+    </footer>
+
+    <script>
+                // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {0
+                navLinks.classList.remove('active');
+            });
+        });
+        
+      const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(
+    '.hero, #about, #gallery, #contact, .gallery-item, .about-image, .contact-container, .section-heading'
+).forEach(el => {
+    el.classList.add('hidden');
+    observer.observe(el);
+});
+    </script>
+</body>
+</html>
